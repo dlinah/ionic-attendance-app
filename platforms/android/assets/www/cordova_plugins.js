@@ -48,6 +48,14 @@ module.exports = [
         "clobbers": [
             "SQLitePlugin"
         ]
+    },
+    {
+        "id": "cordova-plugin-datepicker.DatePicker",
+        "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
+        "pluginId": "cordova-plugin-datepicker",
+        "clobbers": [
+            "datePicker"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -61,7 +69,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.2",
     "cordova-plugin-compat": "1.1.0",
     "phonegap-plugin-barcodescanner": "6.0.6",
-    "cordova-sqlite-storage": "2.0.4"
+    "cordova-sqlite-storage": "2.0.4",
+    "cordova-plugin-datepicker": "0.9.3"
 };
 // BOTTOM OF METADATA
 });

@@ -12,17 +12,26 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   token:any
+  msg:any
   constructor(public storage: Storage,private barcodeScanner: BarcodeScanner,public userSrv:UserService,public menuCtrl:MenuController,public nav: NavController,public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController) {
   	menuCtrl.enable(true);
-  	//this.storage.set('token',null)
-  	//this.token=JSON.stringify(this.storage.get('token'))
+  	if(navParams.get('msg'))
+  		this.msg=navParams.get('msg');
   }
 
   scan(){
   	this.barcodeScanner.scan().then((barcodeData) => {
  		alert(JSON.stringify(barcodeData))
+ 		if(!barcodeData.cancelled){
+ 			this.userSrv.sendcode(barcodeData.text).subscribe( data=>{
+				if(data)
+					this.nav.setRoot(HomePage,{msg:'attendance saved'})
+				else
+					this.nav.setRoot(HomePage,{msg:'error WHILE SAVING ATTENDANCE'})
+ 			})
+ 		}
 	}, (err) => {
-	    alert(err)
+	    console.log(err)
 	});
 	  }
 

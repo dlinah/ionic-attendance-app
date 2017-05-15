@@ -26,15 +26,15 @@ export class Login {
 
   public login() {
     this.showLoading()
-   //this.nav.setRoot(HomePage);
-    //http authinticate
+    
     this.nav.setRoot(HomePage);
+    //http authinticate
+
    this.userSrv.login(this.loginCredentials)
     .subscribe((data)=>{
     	this.loading.dismiss()
     	alert(data)
     	if(data){
-
 	    	this.storage.set('token','JWT'+data);
 	    	this.userSrv.token='JWT'+data;
 	    	this.nav.setRoot(HomePage);
