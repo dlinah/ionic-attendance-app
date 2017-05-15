@@ -14,3 +14,23 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.center > *{
+  display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+    
+}
+.pad {
+    padding: 30px
+}
+.blue {
+	color: blue;
+}
+.toolbar-background {
+  background-color: #00b4c2;
+  }
+ .toolbar-title{
+color: white;
+
+
+ }

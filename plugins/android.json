@@ -19,12 +19,22 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.attendance318198"
         },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.attendance318198"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.attendance318198"
         },
-        "ionic-plugin-keyboard": {
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.ionicframework.attendance318198"
+        },
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.ionicframework.attendance318198"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.attendance318198"
+        }
+    }
 }

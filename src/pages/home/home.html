@@ -1,14 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+	<div class='scan '>
+  	  <ion-fab  class='md center'>
+	  <button ion-fab  class="color">
+	  	<ion-icon name="camera" (click)="scan()"></ion-icon>  
+	  </button>
+	  </ion-fab>
+	</div>
+	<p>{{token}}</p>
 </ion-content>

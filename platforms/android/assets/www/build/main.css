@@ -24743,8 +24743,71 @@ ion-navbar.toolbar {
   }
 }
 
+.center > * {
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-align-content: center !important;
+  -ms-flex-line-pack: center !important;
+  align-content: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.pad {
+  padding: 30px;
+}
+
+.blue {
+  color: blue;
+}
+
+.toolbar-background {
+  background-color: #00b4c2;
+}
+
+.toolbar-title {
+  color: white;
+}
+
+.wheel {
+  margin-top: 15%;
+  margin-left: 12%;
+}
+
+.num {
+  font-size: 60px;
+  position: absolute;
+  top: 16%;
+  color: #00b4c2;
+  width: 90%;
+  text-align: center;
+}
+
+page-home .scan button {
+  width: 150px;
+  height: 150px;
+}
+
+page-home .scan ion-icon {
+  font-size: 70px;
+}
+
+page-home .scan {
+  margin-top: 40%;
+}
+
+page-home .md {
+  margin-left: 25%;
+}
+
+page-home .color {
+  background-color: #00b4c2;
+}
+
 .login-content {
-  background: darkblue;
+  background: #00b4c2;
 }
 
 .login-content .logo-row {
@@ -24770,7 +24833,7 @@ ion-navbar.toolbar {
   font-size: 0.9em;
   margin-bottom: 10px;
   border: 1px solid #ffffff;
-  /*border-bottom: 0px !important;*/
+  border-bottom: 0px !important;
   box-shadow: none !important;
 }
 
@@ -24780,11 +24843,15 @@ ion-navbar.toolbar {
 }
 
 .login-content .item-inner {
-  border-bottom-color: #ffffff !important;
+  border-bottom: 0px !important;
   box-shadow: none !important;
 }
 
 .login-content .submit-btn {
-  background: blue;
+  background: black;
   border-radius: 30px !important;
+}
+
+.login-content .error {
+  color: red;
 }
