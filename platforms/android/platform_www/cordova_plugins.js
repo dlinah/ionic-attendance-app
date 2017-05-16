@@ -34,11 +34,11 @@ module.exports = [
         "runs": true
     },
     {
-        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-        "pluginId": "phonegap-plugin-barcodescanner",
+        "id": "cordova-plugin-datepicker.DatePicker",
+        "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
+        "pluginId": "cordova-plugin-datepicker",
         "clobbers": [
-            "cordova.plugins.barcodeScanner"
+            "datePicker"
         ]
     },
     {
@@ -50,11 +50,11 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-datepicker.DatePicker",
-        "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
-        "pluginId": "cordova-plugin-datepicker",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "pluginId": "phonegap-plugin-barcodescanner",
         "clobbers": [
-            "datePicker"
+            "cordova.plugins.barcodeScanner"
         ]
     }
 ];
@@ -65,12 +65,12 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.4",
     "cordova-plugin-splashscreen": "4.0.3",
     "cordova-plugin-statusbar": "2.2.2",
-    "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-whitelist": "1.3.2",
-    "cordova-plugin-compat": "1.1.0",
-    "phonegap-plugin-barcodescanner": "6.0.6",
+    "ionic-plugin-keyboard": "2.2.1",
+    "cordova-plugin-datepicker": "0.9.3",
     "cordova-sqlite-storage": "2.0.4",
-    "cordova-plugin-datepicker": "0.9.3"
+    "cordova-plugin-compat": "1.1.0",
+    "phonegap-plugin-barcodescanner": "6.0.6"
 };
 // BOTTOM OF METADATA
 });

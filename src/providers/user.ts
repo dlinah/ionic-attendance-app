@@ -5,55 +5,49 @@ import {Observable} from 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
 
 
-
-
 @Injectable()
 export class UserService {
-  headers:Headers =null
-  public token:string =null
-  domain='192.168.43.67:8000'
+  headers:Headers
+  domain='https://itiattendance.herokuapp.com'
   constructor(public http: Http,public storage: Storage) {
     console.log('Hello User Provider');
   }
   login(data){
-    return this.http.post("http://"+this.domain+"/api/login",JSON.stringify(data))
+    let headers=new Headers ({ 'Content-Type': 'application/json' })
+    return this.http.post(this.domain+"/api/login",data,{headers:headers})
     .map(res=>res.json())
-    .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
+    
 
   }
-  sendcode(data){
-    if(!this.headers)
-      this.setheader();
-    return this.http.post("http://"+this.domain+"/qrcode",JSON.stringify(data),{headers:this.headers})
+  async sendcode(data){
+    let headers=await this.setheader();
+    headers.append( 'Content-Type', 'application/json' )
+    return this.http.post(this.domain+"/api/students/attendances",JSON.stringify({code:data}),{headers:headers})
+      
+  }
+  async reqleave(data){
+    let headers=await this.setheader();
+    return this.http.post(this.domain+"/??",JSON.stringify(data),{headers:headers})
       .map(res=>res.json())
       .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
   }
-  reqleave(data){
-    if(!this.headers)
-      this.setheader();
-    return this.http.post("http://"+this.domain+"/??",JSON.stringify(data),{headers:this.headers})
+  async getgrade(){
+    let headers=await this.setheader();
+    return this.http.get(this.domain+"/???",{headers:headers})
       .map(res=>res.json())
       .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
   }
-  getgrade(){
-    if(!this.headers)
-      this.setheader();
-    return this.http.get("http://"+this.domain+"/???",{headers:this.headers})
-      .map(res=>res.json())
-      .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
-  }
-  getleavs(){
-    if(!this.headers)
-      this.setheader();
-    return this.http.get("http://"+this.domain+"/???",{headers:this.headers})
+  async getleavs(){
+    let headers=await this.setheader();
+    return this.http.get(this.domain+"/???",{headers:headers})
       .map(res=>res.json())
       .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
   }
 
 
-  setheader(){
-    let token=this.storage.get('token')
-    this.headers=new Headers ({ 'authentication': token });
+  async setheader(){
+    let token = await this.storage.get('token')
+    return new Headers ({ 'Authorization': token });
   }
 
 

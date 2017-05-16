@@ -28,7 +28,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    storage.get('token').then((val)=>{if(val){userSrv.token=val;this.rootPage=HomePage}else{this.rootPage=Login}}).catch((err)=>{console.log(err)})
+    storage.get('token').then((val)=>{if(val){this.rootPage=HomePage}else{this.rootPage=Login}}).catch((err)=>{console.log(err)})
   }
   goto(page) {
     this.nav.push(page.component);

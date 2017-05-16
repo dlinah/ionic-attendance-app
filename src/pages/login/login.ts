@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Loading,LoadingController,MenuController	} from 'ionic-angular';
+import {  NavController, NavParams , Loading,LoadingController,MenuController	} from 'ionic-angular';
 import {HomePage} from '../home/home'
 import {UserService} from '../../providers/user'
 import { Storage } from '@ionic/storage';
+import {Observable} from 'rxjs/Rx';
+
 
 
 @Component({
@@ -27,20 +29,13 @@ export class Login {
   public login() {
     this.showLoading()
     
-    this.nav.setRoot(HomePage);
-    //http authinticate
-
+    
    this.userSrv.login(this.loginCredentials)
+    .catch((error:any)=>{this.loading.dismiss();this.nav.setRoot(Login,{error:'*wrong username or password'});return  Observable.throw(error.json().error || 'Server error')})
     .subscribe((data)=>{
     	this.loading.dismiss()
-    	alert(data)
-    	if(data){
-	    	this.storage.set('token','JWT'+data);
-	    	this.userSrv.token='JWT'+data;
-	    	this.nav.setRoot(HomePage);
-	    }else{
-			this.nav.setRoot(Login,{error:'*wrong username or password'})
-    	}
+    	this.storage.set('token','JWT '+data['token']);
+    	this.nav.setRoot(HomePage);
     })
   }
 

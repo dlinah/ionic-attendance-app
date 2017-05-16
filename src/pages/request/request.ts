@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams } from 'ionic-angular';
 import {DatePicker} from '@ionic-native/date-picker';
 import {UserService} from '../../providers/user'
 import {Grades} from '../grades/grades'
@@ -26,7 +26,7 @@ export class Request {
   	if(this.req.date == '')
 		this.navCtrl.setRoot(Request,{error:'please select date'})
 	else{
-		this.userSrv.reqleave(this.req).subscribe(data=>{})
+		this.userSrv.reqleave(this.req).then((obs)=>{obs.subscribe(data=>{})})
 		this.navCtrl.push(Grades)
 	}
 

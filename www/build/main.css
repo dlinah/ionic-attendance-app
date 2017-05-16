@@ -24771,6 +24771,10 @@ ion-navbar.toolbar {
   color: white;
 }
 
+.error {
+  color: red;
+}
+
 .wheel {
   margin-top: 15%;
   margin-left: 12%;
@@ -24804,6 +24808,14 @@ page-home .md {
 
 page-home .color {
   background-color: #00b4c2;
+}
+
+page-home .msg {
+  margin-top: 100%;
+}
+
+page-home .msg * {
+  text-align: center;
 }
 
 .login-content {
@@ -24850,8 +24862,4 @@ page-home .color {
 .login-content .submit-btn {
   background: black;
   border-radius: 30px !important;
-}
-
-.login-content .error {
-  color: red;
 }
