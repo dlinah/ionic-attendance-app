@@ -9,17 +9,15 @@
 
 <ion-content padding>
 <p>{{error}}</p>
-  <ion-list>
+  
+        <button ion-button clear (click)="get_date()">pic date</button>
     <form (ngSubmit)="onSubmit()">
-      <ion-item>
-        <ion-label>date</ion-label>
-          <button ion-button full (click)="get_date()">pic date</button>
-      </ion-item>
-      <ion-item>
-        <ion-label>why</ion-label>
-        <ion-textarea [(ngModel)]="req.reason" name="reason"></ion-textarea>
-      </ion-item>
-      <button ion-button type="submit" block>Add Todo</button>
+      
+      <div>
+        <ion-input type='text' [(ngModel)]="req.reason" name="reason" placeholder='tell us why'></ion-input>
+      </div>
+      <button ion-button type="submit" block>send</button>
     </form>
-  </ion-list>
+ 
 </ion-content>
+

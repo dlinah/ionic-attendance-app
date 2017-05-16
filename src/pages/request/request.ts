@@ -37,9 +37,10 @@ export class Request {
           mode: 'date',
           androidTheme: this.date.ANDROID_THEMES.THEME_HOLO_DARK
         }).then(
-          date => this.req.date=data,
+          date => this.req.date=JSON.stringify(date),
           err => console.log('Error occurred while getting date: '+ err)
         );
     }
 
 }
+
