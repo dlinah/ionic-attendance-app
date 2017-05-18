@@ -13,7 +13,6 @@ import {Observable} from 'rxjs/Rx';
 })
 export class HomePage {
   msg:any
-  loading: Loading;
 
 
   constructor(public storage: Storage,private barcodeScanner: BarcodeScanner,public userSrv:UserService,public menuCtrl:MenuController,public nav: NavController,public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController) {
@@ -24,25 +23,22 @@ export class HomePage {
 
   scan(){
   	this.barcodeScanner.scan().then((barcodeData) => {
+      console.log(JSON.stringify(barcodeData))
      		if(!barcodeData.cancelled){
-          this.showLoading()
+          let loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+          });
+          loading.present();
      			this.userSrv.sendcode(barcodeData.text)
           .then(obs=>{
-              obs.catch((error:any)=>{this.loading.dismiss();this.nav.setRoot(HomePage,{msg:'error WHILE SAVING ATTENDANCE'});return  Observable.throw(error.json().error || 'Server error')})
-                 .subscribe( data=>{this.loading.dismiss();this.nav.setRoot(HomePage,{msg:'attendance saved'})})
+              obs.catch((error:any)=>{loading.dismiss();console.log(JSON.stringify(error.json()));this.nav.setRoot(HomePage,{msg:error.json()['message']});return  Observable.throw(error.json().error || 'Server error')})
+                 .subscribe( data=>{loading.dismiss();console.log(data);this.nav.setRoot(HomePage,{msg:'attendance saved'})})
             })
           
      		}
     	}, (err) => {
     	    console.log(err)
   	});
-  }
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
-      dismissOnPageChange: true
-    });
-    this.loading.present();
   }
 
 }

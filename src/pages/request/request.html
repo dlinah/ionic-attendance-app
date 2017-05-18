@@ -1,22 +1,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>request leave</ion-title>
+    <ion-title>request permission</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<p>{{error}}</p>
+<p class="error">{{error}}</p>
   
-        <button ion-button clear (click)="get_date()">pic date</button>
-    <form (ngSubmit)="onSubmit()">
+        <button ion-button clear (click)="get_date()" class="blue">pic date</button>
+        <p class="date">{{req.permissionDate}}</p>
+    <form (ngSubmit)="onSubmit()" #fform="ngForm">
       
       <div>
-        <ion-input type='text' [(ngModel)]="req.reason" name="reason" placeholder='tell us why'></ion-input>
+        <ion-item>
+          <ion-label>Status</ion-label>
+          <ion-select [(ngModel)]="req.permissonStatus" name='Status' required >
+            <ion-option value="Absent">Absent</ion-option>
+            <ion-option value="Late">Late</ion-option>
+            <ion-option value="Leave">Leave</ion-option>
+          </ion-select>
+        </ion-item>
       </div>
-      <button ion-button type="submit" block>send</button>
+      <div class="ss">
+      <button class="blueb send" ion-button type="submit"  [disabled]="!fform.form.valid" >send</button>
+      </div>
     </form>
  
 </ion-content>

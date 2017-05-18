@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { Login } from '../pages/login/login';
 import { Grades } from '../pages/grades/grades';
 import { Request } from '../pages/request/request';
+import { Permission } from '../pages/permission/permission';
 import {UserService} from '../providers/user';
 
 @Component({
@@ -18,11 +19,12 @@ export class MyApp {
   rootPage:any = '';
   pages: Array<{title: string, component: any}>;
 
-  constructor(userSrv:UserService,storage: Storage,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(userSrv:UserService,public storage: Storage,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'grades & leaves', component: Grades },
-      { title: 'requestleave', component: Request }
+      { title: 'request permission', component: Request },
+      { title: 'permissions',component:Permission}
     ];
     platform.ready().then(() => {
       statusBar.styleDefault();
@@ -32,6 +34,10 @@ export class MyApp {
   }
   goto(page) {
     this.nav.push(page.component);
+  }
+  logout(){
+    this.storage.remove('token')
+    this.goto({component:Login})
   }
 }
 

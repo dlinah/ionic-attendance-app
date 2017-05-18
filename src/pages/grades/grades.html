@@ -26,11 +26,12 @@
 		    ></round-progress>
 		  <p class="num">{{grade}}</p>  
     </div>	
-
-    <ion-list>
-	  <ion-list-header>
-	    leaves
-	  </ion-list-header>
-	  <ion-item *ngFor="let item of list">{{item}}</ion-item>
+    <ion-card margin-top>
+	  <ion-card-header>
+	    permissions
+	  </ion-card-header>
+    <ion-list margin-top >
+	  <ion-item *ngFor="let item of list" class='item'>{{item}}</ion-item>
 	</ion-list>
+	</ion-card>
 </ion-content>

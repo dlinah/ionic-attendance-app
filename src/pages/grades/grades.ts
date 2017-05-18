@@ -1,28 +1,42 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
-import {UserService} from '../../providers/user'
+import {  NavController, NavParams ,Loading,LoadingController } from 'ionic-angular';
+import {UserService} from '../../providers/user';
+//import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progressbar';
+
 
 
 @Component({
+  selector: 'page-grades',
   templateUrl: 'grades.html',
 })
 export class Grades {
-	grade :number=10;
-	max :number=100;
-	list :any
+	grade :number=0;
+	max :number=0;
+	list :any;
 
-  constructor(public userSrv:UserService,public navCtrl: NavController, public navParams: NavParams) {
-  	userSrv.getgrade().then((obs)=>{obs.subscribe(data=>{})})//set max &grade
-   	userSrv.getleavs().then((obs)=>{obs.subscribe(data=>{})})//fill list
+  constructor(public userSrv:UserService,public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController) {
+  	let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    
+    userSrv.getmaxgrade().then((obs)=>{obs.subscribe(data=>{this.max=data})})
+   	
+    userSrv.getleavs().then((obs)=>{obs.subscribe(data=>{
+      console.log(JSON.stringify(data));
+      this.list=data.results.map((item)=>(item['date'].substring(0,10)+'  '+item['rule']['absence_status']));
+      this.grade=data['$accAbsencePoints'];
+      loading.dismiss();
 
-  	let dummylist=['14/15/2014 absent permitted','13/12/2015 absent not permitted']
-  	this.list=dummylist
+    })})
+
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Grades');
   }
+  
   
 
 }

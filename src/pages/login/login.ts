@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Rx';
 
 
 @Component({
+  selector:'page-login',
   templateUrl: 'login.html',
   providers: [UserService]
 })
@@ -31,7 +32,7 @@ export class Login {
     
     
    this.userSrv.login(this.loginCredentials)
-    .catch((error:any)=>{this.loading.dismiss();this.nav.setRoot(Login,{error:'*wrong username or password'});return  Observable.throw(error.json().error || 'Server error')})
+    .catch((error:any)=>{this.loading.dismiss();this.error='*wrong username or password';return  Observable.throw(error.json().error || 'Server error')})
     .subscribe((data)=>{
     	this.loading.dismiss()
     	this.storage.set('token','JWT '+data['token']);

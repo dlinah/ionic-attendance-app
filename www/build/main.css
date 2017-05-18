@@ -24760,7 +24760,11 @@ ion-navbar.toolbar {
 }
 
 .blue {
-  color: blue;
+  color: #00b4c2;
+}
+
+.blueb {
+  background-color: #00b4c2;
 }
 
 .toolbar-background {
@@ -24775,18 +24779,27 @@ ion-navbar.toolbar {
   color: red;
 }
 
-.wheel {
+page-grades .wheel {
   margin-top: 15%;
   margin-left: 12%;
 }
 
-.num {
+page-grades .num {
   font-size: 60px;
   position: absolute;
   top: 16%;
   color: #00b4c2;
   width: 90%;
   text-align: center;
+}
+
+page-grades .item {
+  font-size: 13px;
+  max-width: 100%;
+}
+
+page-grades .content {
+  background-color: #f9f9f9;
 }
 
 page-home .scan button {
@@ -24816,30 +24829,31 @@ page-home .msg {
 
 page-home .msg * {
   text-align: center;
+  color: green;
 }
 
-.login-content {
+page-login .login-content {
   background: #00b4c2;
 }
 
-.login-content .logo-row {
+page-login .login-content .logo-row {
   padding-top: 50px;
   padding-bottom: 20px;
 }
 
-.login-content .login-box {
+page-login .login-content .login-box {
   padding: 20px 20px 0px 20px;
   margin-top: 30px;
 }
 
-.login-content ion-row {
+page-login .login-content ion-row {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
 }
 
-.login-content ion-item {
+page-login .login-content ion-item {
   border-radius: 30px !important;
   padding-left: 30px !important;
   font-size: 0.9em;
@@ -24849,17 +24863,51 @@ page-home .msg * {
   box-shadow: none !important;
 }
 
-.login-content .signup-col {
+page-login .login-content .signup-col {
   margin: 0px 16px 0px 16px;
   padding-bottom: 20px;
 }
 
-.login-content .item-inner {
+page-login .login-content .item-inner {
   border-bottom: 0px !important;
   box-shadow: none !important;
 }
 
-.login-content .submit-btn {
+page-login .login-content .submit-btn {
   background: black;
   border-radius: 30px !important;
+}
+
+page-permission .content {
+  background-color: #f9f9f9;
+}
+
+page-permission .new {
+  margin: 10px;
+}
+
+page-permission .cont {
+  color: black;
+}
+
+page-permission .blue, page-permission .error {
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+page-request .send {
+  margin: 16px;
+  width: 40%;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  margin-top: 20%;
+}
+
+page-request .ss {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
 }

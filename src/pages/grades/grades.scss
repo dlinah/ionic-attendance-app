@@ -1,12 +1,9 @@
 page-grades {
-
-
-}
-.wheel{
+	.wheel{
 		margin-top: 15% ;
 		margin-left: 12% ;
-}
-.num{
+	}
+	.num{
 		font-size: 60px;
 		position: absolute;
 		top:16%;
@@ -15,3 +12,14 @@ page-grades {
 		text-align: center;
 
 	}
+	.item{
+		font-size: 13px;
+		max-width: 100%;
+	}
+
+	.content{
+		background-color:#f9f9f9; 
+	}
+
+}
+
